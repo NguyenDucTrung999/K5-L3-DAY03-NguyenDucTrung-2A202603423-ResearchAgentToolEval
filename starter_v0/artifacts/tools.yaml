@@ -123,3 +123,14 @@ tools:
         max_pages: {type: integer, default: 5, description: "Số trang"}
         max_chars: {type: integer, default: 8000, description: "Số ký tự"}
       required: [arxiv_url]
+# -------- new tools ---------
+
+  - name: currency_converter
+    description: "Chuyển đổi số tiền giữa các loại tiền tệ (USD, EUR, VND, JPY, GBP) dựa trên tỷ giá cố định. Sử dụng khi người dùng hỏi quy đổi tiền tệ hoặc giá trị tài chính."
+    parameters:
+      type: object
+      properties:
+        amount: {type: number, description: "Số tiền cần chuyển đổi"}
+        from_currency: {type: string, description: "Mã tiền tệ gốc (ví dụ: USD, EUR, VND)"}
+        to_currency: {type: string, description: "Mã tiền tệ đích (ví dụ: USD, EUR, VND)"}
+      required: [amount, from_currency, to_currency]

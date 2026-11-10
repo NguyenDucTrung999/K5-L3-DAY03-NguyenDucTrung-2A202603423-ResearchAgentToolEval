@@ -111,12 +111,25 @@ def test_policy_instruction_like_lines_go_to_untrusted_text() -> None:
 #   3. failure path (missing key, HTTP error, timeout) -> returns error dict, does not raise
 
 def test_my_new_tool_happy_path() -> None:
-    pytest.skip(TODO)
+    currency_tool = TOOL_FUNCTIONS["currency_converter"]
+    result = currency_tool(amount=100, from_currency="USD", to_currency="VND")
+    assert result["status"] == "success"
+    assert result["amount"] == 100.0
+    assert result["from_currency"] == "USD"
+    assert result["to_currency"] == "VND"
+    assert result["converted_amount"] == 2545000.0
+    assert result["error_message"] is None
 
 
 def test_my_new_tool_bad_input_from_model() -> None:
-    pytest.skip(TODO)
+    currency_tool = TOOL_FUNCTIONS["currency_converter"]
+    result = currency_tool(amount=100, from_currency="US1", to_currency="VND")
+    assert result["status"] == "error"
+    assert "khong hop le" in result["error_message"]
 
 
 def test_my_new_tool_failure_returns_error_dict() -> None:
-    pytest.skip(TODO)
+    currency_tool = TOOL_FUNCTIONS["currency_converter"]
+    result = currency_tool(amount=-50, from_currency="USD", to_currency="VND")
+    assert result["status"] == "error"
+    assert "khong duoc am" in result["error_message"]

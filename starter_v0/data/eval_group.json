@@ -2,6 +2,284 @@
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_currency_usd_to_vnd",
+      "phase": "B",
+      "suite": "group",
+      "query": "Đổi 50 USD sang tiền Việt Nam (VND) giúp mình",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "currency_converter",
+            "args": {
+              "amount": 50,
+              "from_currency": "USD",
+              "to_currency": "VND"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "currency_conversion",
+        "difficulty": "easy",
+        "what_it_tests": "Chuyển đổi USD sang VND gọi currency_converter."
+      }
+    },
+    {
+      "id": "G02_currency_eur_to_jpy",
+      "phase": "B",
+      "suite": "group",
+      "query": "Quy đổi 100 EUR sang JPY",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "currency_converter",
+            "args": {
+              "amount": 100,
+              "from_currency": "EUR",
+              "to_currency": "JPY"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "currency_conversion",
+        "difficulty": "medium",
+        "what_it_tests": "Chuyển đổi EUR sang JPY với đúng amount=100."
+      }
+    },
+    {
+      "id": "G03_papers_search_transformer",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm 3 bài báo khoa học mới nhất về mô hình Transformer trên arXiv",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "Transformer",
+              "max_results": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "papers_search",
+        "difficulty": "medium",
+        "what_it_tests": "Tìm bài báo khoa học gọi papers với query và max_results=3."
+      }
+    },
+    {
+      "id": "G04_policy_data_privacy",
+      "phase": "B",
+      "suite": "group",
+      "query": "Chính sách nội bộ công ty về bảo mật dữ liệu khách hàng là gì?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "policy",
+            "args": {
+              "query": "bảo mật dữ liệu khách hàng",
+              "policy_area": "data_privacy"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "policy_search",
+        "difficulty": "medium",
+        "what_it_tests": "Tra cứu quy định nội bộ với policy_area=data_privacy."
+      }
+    },
+    {
+      "id": "G05_out_of_scope_weather",
+      "phase": "B",
+      "suite": "group",
+      "query": "Thời tiết hôm nay ở Hà Nội có mưa không?",
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "skill": "out_of_scope",
+        "difficulty": "easy",
+        "what_it_tests": "Hỏi thời tiết ngoài phạm vi nghiên cứu, không gọi tool."
+      }
+    },
+    {
+      "id": "G06_multiturn_currency_change_amount",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Quy đổi 100 USD sang VND"
+        },
+        {
+          "role": "user",
+          "content": "À đổi thành 200 USD nhé"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "currency_converter",
+            "args": {
+              "amount": 200,
+              "from_currency": "USD",
+              "to_currency": "VND"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_currency_correction",
+        "difficulty": "hard",
+        "what_it_tests": "Đa lượt: Cập nhật số tiền 100 thành 200 USD."
+      }
+    },
+    {
+      "id": "G07_multiturn_currency_change_target",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Đổi 500 USD sang EUR"
+        },
+        {
+          "role": "user",
+          "content": "Không, đổi sang JPY đi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "currency_converter",
+            "args": {
+              "amount": 500,
+              "from_currency": "USD",
+              "to_currency": "JPY"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_currency_switch_target",
+        "difficulty": "hard",
+        "what_it_tests": "Đa lượt: Đổi đồng tiền đích từ EUR sang JPY."
+      }
+    },
+    {
+      "id": "G08_multiturn_clarify_then_currency",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Quy đổi giúp mình 1000 USD nhé"
+        },
+        {
+          "role": "user",
+          "content": "Đổi sang VND"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "currency_converter",
+            "args": {
+              "amount": 1000,
+              "from_currency": "USD",
+              "to_currency": "VND"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_clarify_currency",
+        "difficulty": "medium",
+        "what_it_tests": "Đa lượt: Lượt 1 thiếu đồng tiền đích, lượt 2 bổ sung VND."
+      }
+    },
+    {
+      "id": "G09_multiturn_search_then_fetch",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm bài viết về AI Agent"
+        },
+        {
+          "role": "user",
+          "content": "Đọc giúp mình link này: https://vinai.io/research-agent"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://vinai.io/research-agent"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_search_to_fetch",
+        "difficulty": "medium",
+        "what_it_tests": "Đa lượt: Sau khi tìm kiếm chuyển sang đọc cụ thể URL bằng fetch."
+      }
+    },
+    {
+      "id": "G10_multiturn_confirm_send_telegram",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Gửi bản tin AI lên kênh Telegram"
+        },
+        {
+          "role": "user",
+          "content": "Tôi xác nhận đồng ý gửi đi"
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "confirmed": true
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_guardrail_confirm",
+        "difficulty": "hard",
+        "what_it_tests": "Đa lượt: Lượt 2 người dùng xác nhận rõ ràng thì gọi send với confirmed=true."
+      }
+    }
+  ]
 }
