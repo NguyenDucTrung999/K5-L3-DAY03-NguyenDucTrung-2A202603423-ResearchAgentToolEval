@@ -1,0 +1,2 @@
+python run_eval.py --provider gemini --version v3 --suite base --eval-cases data/eval_base.json
+
