@@ -1,0 +1,150 @@
+{
+  "transcript_id": "v2_openai_20261110T145405600685",
+  "version": "v2",
+  "artifact_version": "v2+p1439a8687654+teef4681b9079",
+  "prompt_hash": "1439a8687654e12eec8e4d102b6c0f5e35f3bf522455e0ccbfc833661ee2c872",
+  "tools_hash": "eef4681b907916d709ce0f86e1c36e0fd03187ba2ee14690e01ed77af225317a",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "system_prompt": "E:\\AI_InACtion\\K5-L3-DAY03-NguyenDucTrung-2A202603423-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "E:\\AI_InACtion\\K5-L3-DAY03-NguyenDucTrung-2A202603423-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-11-10T14:54:05",
+  "updated_at": "2026-11-10T14:54:40",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T14:54:29",
+      "user": "Nhiệt độ Hà Nội hôm nay",
+      "status": "answered",
+      "assistant_text": "I couldn't find specific information about today's temperature in Hà Nội. However, you can check local weather websites or apps for the most accurate and up-to-date weather information.\n\nIf you need more general news or updates about Hà Nội, here are some recent articles:\n\n1. **[Vienna Chamber Orchestra brings European classical music to Hà Nội](https://vietnamnews.vn/life-style/1803833/vienna-chamber-orchestra-brings-european-classical-music-to-ha-noi.html)** - The orchestra performed at Hồ Gươm Theatre on November 7, featuring renowned artists.\n\n2. **[Hà Nội xử vắng mặt 2 người lừa đảo 15 năm trước nay đã trốn ra ngoại quốc](https://www.nguoi-viet.com/viet-nam/ha-noi-xu-khiem-dien-2-nguoi-bi-truy-na-trong-vu-lua-dao-15-nam-truoc)** - A court case involving two fraudsters who escaped abroad after 15 years.\n\n3. **[Lễ hội Bia Hà Nội 2026 trở lại ấn tượng với quy mô nâng tầm](https://www.qdnd.vn/van-hoa/giai-tri/le-hoi-bia-ha-noi-2026-se-duoc-to-chuc-tai-truong-dua-f1-my-dinh-1063884)** - The upcoming Hà Nội Beer Festival promises to be a vibrant cultural event.\n\nIf you have any other specific requests or need further assistance, feel free to ask!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "Hà Nội",
+                "topic": "news"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "Hà Nội",
+                "topic": "news"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "Hà Nội",
+                "topic": "news",
+                "timeframe": "week",
+                "items": [
+                  {
+                    "title": "Vienna Chamber Orchestra brings European classical music to Hà Nội",
+                    "url": "https://vietnamnews.vn/life-style/1803833/vienna-chamber-orchestra-brings-european-classical-music-to-ha-noi.html",
+                    "source": "vietnamnews.vn",
+                    "summary": "HÀ NỘI — The Vienna Chamber Orchestra performed at Hồ Gươm Theatre in Hà Nội on November 7 as part of The Vienna Concert 2026, featuring composer, pianist and conductor Alma Deutscher and internationally renowned opera singers Adrian Eröd (baritone) and Nadezhda Karyazina (mezzo-soprano). [...] Hà Nội takes steps to turn 50 investment deals into concrete projects\n Hà Nội's 2026 international economic integration plan\n Hà Nội takes steps to attract strategic investors\n\nHanoi Tourism \n\n Hà Nội builds four-season tourism appeal\n Hà Nội seeks to turn cultural assets into stronger tourism driver\n Hà Nội targets 30 per cent public transport use to ease congestion\n\nBrandinfo [...] Việt Nam Insight \n\n VN sets out plan to become strong maritime nation by 2030\n Party Central Committee adopts new mindset for national security, social development in new era\n Top leader calls for stronger action to turn Party decisions into tangible results\n\nHanoi today \n\n 9.2 million Hanoians benefits from free health screening programme\n Hà Nội shines with ‘Light Symphony – Welcoming the New Year 2026’ show\n Hà Nội plans $1.1 billion to upgrade West Lake area\n\nHanoi Investment Promotion",
+                    "score": 0.5712171
+                  },
+                  {
+                    "title": "Hà Nội xử vắng mặt 2 người lừa đảo 15 năm trước nay đã trốn ra ngoại quốc",
+                    "url": "https://www.nguoi-viet.com/viet-nam/ha-noi-xu-khiem-dien-2-nguoi-bi-truy-na-trong-vu-lua-dao-15-nam-truoc",
+                    "source": "nguoi-viet.com",
+                    "summary": "More\n\n# Hà Nội xử vắng mặt 2 người lừa đảo 15 năm trước nay đã trốn ra ngoại quốc\n\nModified date:\n\nFacebookXEmailPrint\n\nHÀ NỘI, Việt Nam (NV) – Hôm 9 Tháng Mười Một, Tòa Án Hà Nội đã xử khiếm diện và tuyên phạt bị cáo Nguyễn Thị Hương Giang, 53 tuổi, cựu giám đốc ngn hàng Thương Mại Cổ Phần Đông Nam Á – chi nhánh Hai Bà Trưng (SeABank Hai Bà Trưng), 10 năm tù về tội “vi phạm quy định về cho vay trong hoạt động của các tổ chức tín dụng.” [...] format(\"woff2\");unicode-range:U+302-303,U+305,U+307-308,U+310,U+312,U+315,U+31A,U+326-327,U+32C,U+32F-330,U+332-333,U+338,U+33A,U+346,U+34D,U+391-3A1,U+3A3-3A9,U+3B1-3C9,U+3D1,U+3D5-3D6,U+3F0-3F1,U+3F4-3F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-209F,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231 [...] format(\"woff2\");unicode-range:U+302-303,U+305,U+307-308,U+310,U+312,U+315,U+31A,U+326-327,U+32C,U+32F-330,U+332-333,U+338,U+33A,U+346,U+34D,U+391-3A1,U+3A3-3A9,U+3B1-3C9,U+3D1,U+3D5-3D6,U+3F0-3F1,U+3F4-3F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-209F,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231",
+                    "score": 0.3895703
+                  },
+                  {
+                    "title": "Lễ hội Bia Hà Nội 2026 trở lại ấn tượng với quy mô nâng tầm",
+                    "url": "https://www.qdnd.vn/van-hoa/giai-tri/le-hoi-bia-ha-noi-2026-se-duoc-to-chuc-tai-truong-dua-f1-my-dinh-1063884",
+                    "source": "qdnd.vn",
+                    "summary": "Tham dự Lễ hội Bia Hà Nội 2026, thực khách sẽ được đắm chìm trong một không gian sống động, nơi nét đẹp truyền thống của Hà Thành xưa hòa quyện nhịp nhàng cùng tinh thần thời đại phóng khoáng, trẻ trung. Năm nay, lễ hội sẽ tạo nên một không gian văn hóa sống động, đậm nét giao thoa giữa vẻ đẹp truyền thống và hơi thở hiện đại của Thủ đô, với những khu vực độc đáo đại diện cho ba dòng sản phẩm nổi tiếng của HABECO: Bia Hà Nội, Bia hơi Hà Nội và Hanoi Premium.\n\n|  | [...] Đây đã được coi là nét văn hóa ẩm thực không chỉ của người dân Hà Nội mà còn đối với du khách bốn phương. Sau gần hai thập kỷ gắn bó cùng nhịp sống Thủ đô, Lễ hội Bia Hà Nội 2026 vẫn luôn giữ được những giá trị văn hóa và không ngừng sáng tạo, mang đến một sự kiện độc đáo, xứng danh “Thương hiệu Quốc gia Việt Nam” của đơn vị tổ chức là HABECO.\n\n|  |\n\n|  |\n| Lễ hội Bia Hà Nội là sự kiện được mong chờ trong năm của người dân và du khách tới Hà Nội. | [...] Mỗi khu vực đều được thiết kế mang đậm bản sắc riêng, không chỉ mang đến trải nghiệm thăng hoa về hương vị mà còn mở ra câu chuyện văn hóa, tinh thần đằng sau từng dòng sản phẩm: Đại lộ bia hơi Hà Nội - Không gian quen thuộc của người Hà Nội xưa với hàng Bia Hơi nhộn nhịp nơi góc phố cổ; quảng trường bia Hà Nội - Tất cả niềm tự hào về nét văn hóa truyền thống được gìn giữ qua thời gian, hòa nhập với xu thế thời đại; Hanoi Premium Tower - Bước vào không gian thời thượng của giới trẻ với vị bia",
+                    "score": 0.35033303
+                  },
+                  {
+                    "title": "Hai khu đô thị đa mục tiêu tại Hà Nội đẩy nhanh tiến độ triển khai",
+                    "url": "https://tapchikinhtetaichinh.vn/hai-khu-do-thi-da-muc-tieu-tai-ha-noi-day-nhanh-tien-do-trien-khai-172010.html",
+                    "source": "tapchikinhtetaichinh.vn",
+                    "summary": "Đối với Dự án Bắc Thăng Long Urban City, liên danh nhà đầu tư gồm Tổng công ty Đầu tư và Phát triển nhà Hà Nội (Handico), Công ty cổ phần Tập đoàn Sunshine, Công ty TNHH Đầu tư Big Gain, Công ty cổ phần Thái Nam Land và Công ty cổ phần Bất động sản Potamos cho biết, dự án đã cơ bản hoàn thiện các thủ tục pháp lý quan trọng, từng bước triển khai công tác giải phóng mặt bằng, chuẩn bị các điều kiện tổ chức thi công. [...] Dự án nằm trên địa bàn hai xã Thiên Lộc và Phúc Thịnh, có quy mô nghiên cứu khoảng 375,36 ha, tổng diện tích khu đất khoảng 465,45 ha. Tổng vốn đầu tư dự kiến khoảng 99.788 tỷ đồng, quy mô dn số khoảng 97.492 người. Thời gian thực hiện dự án từ năm 2026 đến năm 2032.\n\nVề công tác giải phóng mặt bằng, ngày 27/8/2026, UBND thành phố Hà Nội ban hành Quyết định số 4617/QĐ-UBND về chủ trương thực hiện dự án bồi thường, hỗ trợ, tái định cư độc lập phục vụ triển khai Bắc Thăng Long Urban City. [...] Đánh giá kết quả thực hiện, Chủ tịch UBND thành phố Hà Nội Vũ Đại Thắng cho biết, từ ngày 2/2/2026, khi dự án mới ở giai đoạn ý tưởng sơ khởi, đến nay sau hơn 9 tháng đã đạt được khối lượng công việc rất lớn. Từ một ý tưởng ban đầu, dự án đã hình thành mặt bằng khoảng 530 ha và triển khai thi công trên thực địa.",
+                    "score": 0.34528238
+                  },
+                  {
+                    "title": "Tóm tắt nhanh Nghị quyết 96/2026/NQ-HĐND của Hà Nội về xử lý vi phạm tại 12 dự án chung cư",
+                    "url": "https://luatvietnam.vn/dat-dai-nha-o/tom-tat-nghi-quyet-96-2026-nq-hdnd-cua-ha-noi-ve-xu-ly-vi-pham-tai-12-du-an-chung-cu-567-115396-article.html",
+                    "source": "luatvietnam.vn",
+                    "summary": "Ngoài ra, nhà ở thấp tầng không đáp ứng tiêu chí được tồn tại; công trình hạ tầng xã hội thiết yếu không đáp ứng điều kiện quy định; các công trình, hạng mục khác không thuộc trường hợp được tồn tại có điều kiện đều phải phá dỡ.\n\nTheo Điều 6, Chủ tịch UBND cấp xã ban hành quyết định buộc phá dỡ. Trong thời gian 30 ngày kể từ ngày quyết định có hiệu lực, chủ đầu tư phải hoàn thành lựa chọn đơn vị tư vấn, bố trí kinh phí và công khai kế hoạch phá dỡ. [...] Công trình cao tầng hoặc phần công trình còn lại sau phá dỡ chưa đáp ứng tiêu chí về hạ tầng kỹ thuật, hạ tầng xã hội thiết yếu vẫn có thể được tồn tại có điều kiện nếu đáp ứng các tiêu chí còn lại và có phương án khắc phục được cơ quan có thẩm quyền đánh giá khả thi về kỹ thuật, quy hoạch và nguồn lực.\n\nĐối với nhà ở thấp tầng, điều kiện được tồn tại là có hơn 50% diện tích xy dựng công trình nằm ngoài đất quy hoạch chức năng hạ tầng kỹ thuật, hạ tầng xã hội. [...] RSSRSS\n\nThứ Hai, 09/11/2026,\n\nTăng giảm cỡ chữ:\n\n# Tóm tắt nhanh Nghị quyết 96/2026/NQ-HĐND của Hà Nội về xử lý vi phạm tại 12 dự án chung cư\n\nauthor \n\nTác giả: Ngọc Thúy\n\nLuật sư Hoàng Tuấn Vũ \n\nTham vấn bởi: Luật sư Hoàng Tuấn Vũ\n\nNgày 28/10/2026, HĐND TP Hà Nội ban hành Nghị quyết 96/2026/NQ-HĐND của Hà Nội về xử lý vi phạm đất đai, trật tự xy dựng gắn với cải tạo, chỉnh trang đô thị. Nghị quyết có hiệu lực từ 07/11/2026, với những nội dung đáng chú ý sau đy.\n\nNội dung chính [Ẩn]",
+                    "score": 0.2719416
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "I couldn't find specific information about today's temperature in Hà Nội. However, you can check local weather websites or apps for the most accurate and up-to-date weather information.\n\nIf you need more general news or updates about Hà Nội, here are some recent articles:\n\n1. **[Vienna Chamber Orchestra brings European classical music to Hà Nội](https://vietnamnews.vn/life-style/1803833/vienna-chamber-orchestra-brings-european-classical-music-to-ha-noi.html)** - The orchestra performed at Hồ Gươm Theatre on November 7, featuring renowned artists.\n\n2. **[Hà Nội xử vắng mặt 2 người lừa đảo 15 năm trước nay đã trốn ra ngoại quốc](https://www.nguoi-viet.com/viet-nam/ha-noi-xu-khiem-dien-2-nguoi-bi-truy-na-trong-vu-lua-dao-15-nam-truoc)** - A court case involving two fraudsters who escaped abroad after 15 years.\n\n3. **[Lễ hội Bia Hà Nội 2026 trở lại ấn tượng với quy mô nâng tầm](https://www.qdnd.vn/van-hoa/giai-tri/le-hoi-bia-ha-noi-2026-se-duoc-to-chuc-tai-truong-dua-f1-my-dinh-1063884)** - The upcoming Hà Nội Beer Festival promises to be a vibrant cultural event.\n\nIf you have any other specific requests or need further assistance, feel free to ask!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "Hà Nội",
+            "topic": "news"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "Hà Nội",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "Vienna Chamber Orchestra brings European classical music to Hà Nội",
+                "url": "https://vietnamnews.vn/life-style/1803833/vienna-chamber-orchestra-brings-european-classical-music-to-ha-noi.html",
+                "source": "vietnamnews.vn",
+                "summary": "HÀ NỘI — The Vienna Chamber Orchestra performed at Hồ Gươm Theatre in Hà Nội on November 7 as part of The Vienna Concert 2026, featuring composer, pianist and conductor Alma Deutscher and internationally renowned opera singers Adrian Eröd (baritone) and Nadezhda Karyazina (mezzo-soprano). [...] Hà Nội takes steps to turn 50 investment deals into concrete projects\n Hà Nội's 2026 international economic integration plan\n Hà Nội takes steps to attract strategic investors\n\nHanoi Tourism \n\n Hà Nội builds four-season tourism appeal\n Hà Nội seeks to turn cultural assets into stronger tourism driver\n Hà Nội targets 30 per cent public transport use to ease congestion\n\nBrandinfo [...] Việt Nam Insight \n\n VN sets out plan to become strong maritime nation by 2030\n Party Central Committee adopts new mindset for national security, social development in new era\n Top leader calls for stronger action to turn Party decisions into tangible results\n\nHanoi today \n\n 9.2 million Hanoians benefits from free health screening programme\n Hà Nội shines with ‘Light Symphony – Welcoming the New Year 2026’ show\n Hà Nội plans $1.1 billion to upgrade West Lake area\n\nHanoi Investment Promotion",
+                "score": 0.5712171
+              },
+              {
+                "title": "Hà Nội xử vắng mặt 2 người lừa đảo 15 năm trước nay đã trốn ra ngoại quốc",
+                "url": "https://www.nguoi-viet.com/viet-nam/ha-noi-xu-khiem-dien-2-nguoi-bi-truy-na-trong-vu-lua-dao-15-nam-truoc",
+                "source": "nguoi-viet.com",
+                "summary": "More\n\n# Hà Nội xử vắng mặt 2 người lừa đảo 15 năm trước nay đã trốn ra ngoại quốc\n\nModified date:\n\nFacebookXEmailPrint\n\nHÀ NỘI, Việt Nam (NV) – Hôm 9 Tháng Mười Một, Tòa Án Hà Nội đã xử khiếm diện và tuyên phạt bị cáo Nguyễn Thị Hương Giang, 53 tuổi, cựu giám đốc ngn hàng Thương Mại Cổ Phần Đông Nam Á – chi nhánh Hai Bà Trưng (SeABank Hai Bà Trưng), 10 năm tù về tội “vi phạm quy định về cho vay trong hoạt động của các tổ chức tín dụng.” [...] format(\"woff2\");unicode-range:U+302-303,U+305,U+307-308,U+310,U+312,U+315,U+31A,U+326-327,U+32C,U+32F-330,U+332-333,U+338,U+33A,U+346,U+34D,U+391-3A1,U+3A3-3A9,U+3B1-3C9,U+3D1,U+3D5-3D6,U+3F0-3F1,U+3F4-3F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-209F,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231 [...] format(\"woff2\");unicode-range:U+302-303,U+305,U+307-308,U+310,U+312,U+315,U+31A,U+326-327,U+32C,U+32F-330,U+332-333,U+338,U+33A,U+346,U+34D,U+391-3A1,U+3A3-3A9,U+3B1-3C9,U+3D1,U+3D5-3D6,U+3F0-3F1,U+3F4-3F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-209F,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231",
+                "score": 0.3895703
+              },
+              {
+                "title": "Lễ hội Bia Hà Nội 2026 trở lại ấn tượng với quy mô nâng tầm",
+                "url": "https://www.qdnd.vn/van-hoa/giai-tri/le-hoi-bia-ha-noi-2026-se-duoc-to-chuc-tai-truong-dua-f1-my-dinh-1063884",
+                "source": "qdnd.vn",
+                "summary": "Tham dự Lễ hội Bia Hà Nội 2026, thực khách sẽ được đắm chìm trong một không gian sống động, nơi nét đẹp truyền thống của Hà Thành xưa hòa quyện nhịp nhàng cùng tinh thần thời đại phóng khoáng, trẻ trung. Năm nay, lễ hội sẽ tạo nên một không gian văn hóa sống động, đậm nét giao thoa giữa vẻ đẹp truyền thống và hơi thở hiện đại của Thủ đô, với những khu vực độc đáo đại diện cho ba dòng sản phẩm nổi tiếng của HABECO: Bia Hà Nội, Bia hơi Hà Nội và Hanoi Premium.\n\n|  | [...] Đây đã được coi là nét văn hóa ẩm thực không chỉ của người dân Hà Nội mà còn đối với du khách bốn phương. Sau gần hai thập kỷ gắn bó cùng nhịp sống Thủ đô, Lễ hội Bia Hà Nội 2026 vẫn luôn giữ được những giá trị văn hóa và không ngừng sáng tạo, mang đến một sự kiện độc đáo, xứng danh “Thương hiệu Quốc gia Việt Nam” của đơn vị tổ chức là HABECO.\n\n|  |\n\n|  |\n| Lễ hội Bia Hà Nội là sự kiện được mong chờ trong năm của người dân và du khách tới Hà Nội. | [...] Mỗi khu vực đều được thiết kế mang đậm bản sắc riêng, không chỉ mang đến trải nghiệm thăng hoa về hương vị mà còn mở ra câu chuyện văn hóa, tinh thần đằng sau từng dòng sản phẩm: Đại lộ bia hơi Hà Nội - Không gian quen thuộc của người Hà Nội xưa với hàng Bia Hơi nhộn nhịp nơi góc phố cổ; quảng trường bia Hà Nội - Tất cả niềm tự hào về nét văn hóa truyền thống được gìn giữ qua thời gian, hòa nhập với xu thế thời đại; Hanoi Premium Tower - Bước vào không gian thời thượng của giới trẻ với vị bia",
+                "score": 0.35033303
+              },
+              {
+                "title": "Hai khu đô thị đa mục tiêu tại Hà Nội đẩy nhanh tiến độ triển khai",
+                "url": "https://tapchikinhtetaichinh.vn/hai-khu-do-thi-da-muc-tieu-tai-ha-noi-day-nhanh-tien-do-trien-khai-172010.html",
+                "source": "tapchikinhtetaichinh.vn",
+                "summary": "Đối với Dự án Bắc Thăng Long Urban City, liên danh nhà đầu tư gồm Tổng công ty Đầu tư và Phát triển nhà Hà Nội (Handico), Công ty cổ phần Tập đoàn Sunshine, Công ty TNHH Đầu tư Big Gain, Công ty cổ phần Thái Nam Land và Công ty cổ phần Bất động sản Potamos cho biết, dự án đã cơ bản hoàn thiện các thủ tục pháp lý quan trọng, từng bước triển khai công tác giải phóng mặt bằng, chuẩn bị các điều kiện tổ chức thi công. [...] Dự án nằm trên địa bàn hai xã Thiên Lộc và Phúc Thịnh, có quy mô nghiên cứu khoảng 375,36 ha, tổng diện tích khu đất khoảng 465,45 ha. Tổng vốn đầu tư dự kiến khoảng 99.788 tỷ đồng, quy mô dn số khoảng 97.492 người. Thời gian thực hiện dự án từ năm 2026 đến năm 2032.\n\nVề công tác giải phóng mặt bằng, ngày 27/8/2026, UBND thành phố Hà Nội ban hành Quyết định số 4617/QĐ-UBND về chủ trương thực hiện dự án bồi thường, hỗ trợ, tái định cư độc lập phục vụ triển khai Bắc Thăng Long Urban City. [...] Đánh giá kết quả thực hiện, Chủ tịch UBND thành phố Hà Nội Vũ Đại Thắng cho biết, từ ngày 2/2/2026, khi dự án mới ở giai đoạn ý tưởng sơ khởi, đến nay sau hơn 9 tháng đã đạt được khối lượng công việc rất lớn. Từ một ý tưởng ban đầu, dự án đã hình thành mặt bằng khoảng 530 ha và triển khai thi công trên thực địa.",
+                "score": 0.34528238
+              },
+              {
+                "title": "Tóm tắt nhanh Nghị quyết 96/2026/NQ-HĐND của Hà Nội về xử lý vi phạm tại 12 dự án chung cư",
+                "url": "https://luatvietnam.vn/dat-dai-nha-o/tom-tat-nghi-quyet-96-2026-nq-hdnd-cua-ha-noi-ve-xu-ly-vi-pham-tai-12-du-an-chung-cu-567-115396-article.html",
+                "source": "luatvietnam.vn",
+                "summary": "Ngoài ra, nhà ở thấp tầng không đáp ứng tiêu chí được tồn tại; công trình hạ tầng xã hội thiết yếu không đáp ứng điều kiện quy định; các công trình, hạng mục khác không thuộc trường hợp được tồn tại có điều kiện đều phải phá dỡ.\n\nTheo Điều 6, Chủ tịch UBND cấp xã ban hành quyết định buộc phá dỡ. Trong thời gian 30 ngày kể từ ngày quyết định có hiệu lực, chủ đầu tư phải hoàn thành lựa chọn đơn vị tư vấn, bố trí kinh phí và công khai kế hoạch phá dỡ. [...] Công trình cao tầng hoặc phần công trình còn lại sau phá dỡ chưa đáp ứng tiêu chí về hạ tầng kỹ thuật, hạ tầng xã hội thiết yếu vẫn có thể được tồn tại có điều kiện nếu đáp ứng các tiêu chí còn lại và có phương án khắc phục được cơ quan có thẩm quyền đánh giá khả thi về kỹ thuật, quy hoạch và nguồn lực.\n\nĐối với nhà ở thấp tầng, điều kiện được tồn tại là có hơn 50% diện tích xy dựng công trình nằm ngoài đất quy hoạch chức năng hạ tầng kỹ thuật, hạ tầng xã hội. [...] RSSRSS\n\nThứ Hai, 09/11/2026,\n\nTăng giảm cỡ chữ:\n\n# Tóm tắt nhanh Nghị quyết 96/2026/NQ-HĐND của Hà Nội về xử lý vi phạm tại 12 dự án chung cư\n\nauthor \n\nTác giả: Ngọc Thúy\n\nLuật sư Hoàng Tuấn Vũ \n\nTham vấn bởi: Luật sư Hoàng Tuấn Vũ\n\nNgày 28/10/2026, HĐND TP Hà Nội ban hành Nghị quyết 96/2026/NQ-HĐND của Hà Nội về xử lý vi phạm đất đai, trật tự xy dựng gắn với cải tạo, chỉnh trang đô thị. Nghị quyết có hiệu lực từ 07/11/2026, với những nội dung đáng chú ý sau đy.\n\nNội dung chính [Ẩn]",
+                "score": 0.2719416
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T14:54:40"
+    }
+  ]
+}

@@ -1,7 +1,410 @@
 {
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
-  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "description": "Case do NHÓM tự viết thêm để cover tool mới github, policy nội bộ, và multi-turn tool switching. 5 single-turn và 5 multi-turn.",
+  "cases": [
+    {
+      "id": "G01_github_search_routing",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm các repository GitHub về DeepSeek R1",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github",
+            "args": {
+              "query": "DeepSeek R1"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "routing_github",
+        "difficulty": "easy",
+        "what_it_tests": "Tìm repo GitHub mã nguồn mở -> route tới tool github."
+      }
+    },
+    {
+      "id": "G02_github_sort_stars",
+      "phase": "B",
+      "suite": "group",
+      "query": "Cho mình top repository GitHub nhiều sao nhất (stars) về AI Agent",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github",
+            "args": {
+              "query": "AI Agent",
+              "sort": "stars"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "arg_github_sort",
+        "difficulty": "medium",
+        "what_it_tests": "Yêu cầu repo nhiều sao nhất -> sort=stars."
+      }
+    },
+    {
+      "id": "G03_github_limit_arg",
+      "phase": "B",
+      "suite": "group",
+      "query": "Lấy 3 repo github phổ biến nhất về LangChain",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github",
+            "args": {
+              "query": "LangChain",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "arg_github_limit",
+        "difficulty": "medium",
+        "what_it_tests": "Trích limit=3 cho github search."
+      }
+    },
+    {
+      "id": "G04_policy_data_privacy",
+      "phase": "B",
+      "suite": "group",
+      "query": "Theo chính sách bảo mật của công ty, có được đưa API key khách hàng vào public repo không?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "policy",
+            "args": {
+              "policy_area": "data_privacy"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "routing_policy_privacy",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi chính sách bảo mật dữ liệu công ty -> route policy area data_privacy."
+      }
+    },
+    {
+      "id": "G05_clarify_missing_github_topic",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm giúp mình vài repo GitHub hot nhất hiện nay",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "clarify_missing_github_topic",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi repo GitHub nhưng không có chủ đề/công nghệ cụ thể -> clarify hỏi lại."
+      }
+    },
+    {
+      "id": "GM01_clarify_then_github",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm repo mã nguồn mở trên GitHub giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Về mô hình YOLO nhé"
+        },
+        {
+          "role": "user",
+          "content": "Lấy 5 repo nhiều sao nhất"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github",
+            "args": {
+              "query": "YOLO",
+              "sort": "stars",
+              "limit": 5
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_clarify_github",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: ban đầu thiếu topic -> cung cấp YOLO -> chốt sort stars và limit 5."
+      }
+    },
+    {
+      "id": "GM02_switch_github_to_news",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm các repo GitHub về Whisper"
+        },
+        {
+          "role": "user",
+          "content": "Thôi không xem code nữa, chuyển sang tìm tin tức hôm nay về Whisper đi"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ tìm tin tức hôm nay thôi"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Whisper",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_switch_github_to_news",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: chuyển từ GitHub sang tin tức web, carry Whisper, timeframe=day, topic=news."
+      }
+    },
+    {
+      "id": "GM03_correction_github_query",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm repo GitHub về Llama 3"
+        },
+        {
+          "role": "user",
+          "content": "À đổi thành DeepSeek R1 nhé"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ lấy repo về DeepSeek R1 thôi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github",
+            "args": {
+              "query": "DeepSeek R1"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_correction_github_query",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: sửa query từ Llama 3 sang DeepSeek R1."
+      }
+    },
+    {
+      "id": "GM04_correction_github_limit",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Lấy 10 repo GitHub về vLLM"
+        },
+        {
+          "role": "user",
+          "content": "Nhiều quá, cho mình 3 thôi"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn là về vLLM nhé"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github",
+            "args": {
+              "query": "vLLM",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_correction_github_limit",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: sửa limit từ 10 xuống 3 cho github."
+      }
+    },
+    {
+      "id": "GM05_parallel_github_and_arxiv",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Mình đang nghiên cứu về diffusion models"
+        },
+        {
+          "role": "user",
+          "content": "Tìm giúp mình cả paper arXiv và repo GitHub về diffusion models"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "diffusion models"
+            }
+          },
+          {
+            "name": "github",
+            "args": {
+              "query": "diffusion models"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_parallel_github_papers",
+        "difficulty": "hard",
+        "what_it_tests": "2 turns: yêu cầu song song cả paper arXiv và code GitHub."
+      }
+    },
+    {
+      "id": "G06_weather_today",
+      "phase": "B",
+      "suite": "group",
+      "query": "Thời tiết Hà Nội hôm nay thế nào?",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "topic": "general",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "weather_lookup",
+        "difficulty": "medium",
+        "what_it_tests": "Thời tiết Hà Nội hôm nay -> lookup với topic=general, timeframe=day"
+      }
+    },
+    {
+      "id": "G07_famous_quote_lookup",
+      "phase": "B",
+      "suite": "group",
+      "query": "5 điều Bác Hồ dạy gồm những nội dung gì?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "5 điều Bác Hồ dạy",
+              "topic": "general"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "quote_fact_lookup",
+        "difficulty": "easy",
+        "what_it_tests": "Tra cứu văn bản lịch sử/danh ngôn -> gọi lookup topic=general, query đầy đủ"
+      }
+    },
+    {
+      "id": "G08_friendly_greeting_no_tool",
+      "phase": "B",
+      "suite": "group",
+      "query": "Chào bạn, hôm nay bạn có khỏe không?",
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "no_tool": true,
+        "behavior": "answer_without_tool"
+      },
+      "metadata": {
+        "skill": "conversational_greeting",
+        "difficulty": "easy",
+        "what_it_tests": "Chào hỏi giao tiếp đời thường -> trả lời tự nhiên, KHÔNG gọi tool"
+      }
+    },
+    {
+      "id": "G09_simple_math_chat_no_tool",
+      "phase": "B",
+      "suite": "group",
+      "query": "10 cộng 10 bằng mấy?",
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "no_tool": true,
+        "behavior": "answer_without_tool"
+      },
+      "metadata": {
+        "skill": "conversational_math",
+        "difficulty": "easy",
+        "what_it_tests": "Hỏi phép tính đơn giản thường ngày -> trả lời tự nhiên trực tiếp, KHÔNG gọi tool"
+      }
+    },
+    {
+      "id": "GM06_weather_then_tomorrow",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Nhiệt độ tại Đà Nẵng hôm nay khoảng bao nhiêu độ?"
+        },
+        {
+          "role": "user",
+          "content": "Thế còn ngày mai thì có mưa không?"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "topic": "general"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_weather_followup",
+        "difficulty": "medium",
+        "what_it_tests": "Multi-turn theo dõi thời tiết liên tục duy trì topic=general"
+      }
+    }
+  ]
 }
